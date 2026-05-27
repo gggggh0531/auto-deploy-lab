@@ -1,6 +1,6 @@
+# 忽略敏感文件和不必要的文件
+*.pem
+*.key
+*.log
 .DS_Store
-.DS_Store?
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+node_modules
