@@ -1,0 +1,19 @@
+name: Deploy to Aliyun ECS
+on:
+  push:
+    branches:
+      - main  # 如果你的主分支是 master，就改成 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: 部署文件到服务器
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -o StrictHostKeyChecking=no -r ./html/* root@${{ secrets.HOST }}:/var/www/html/
